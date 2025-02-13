@@ -14,7 +14,7 @@ const app = express();
 
 // Proper CORS Configuration
 app.use(cors({
-  origin: "https://coffee-order-m4bh1i05n-shubhams-projects-ac9ce468.vercel.app/",  // You can replace "*" with your frontend URL for better security
+  origin: "*",  // You can replace "*" with your frontend URL for better security
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
