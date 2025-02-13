@@ -8,13 +8,19 @@ require("dotenv").config();
 const cors = require("cors");
 const cron = require("node-cron");
 const { sendNotification } = require("./controllers/sendNotification");
+const AuthMiddleware = require("./middlewares/auth");
 
 const app = express();
 
-// Set static path
-app.use(express.static(path.join(__dirname, "client")));
+// Proper CORS Configuration
+app.use(cors({
+  origin: "https://coffee-order-m4bh1i05n-shubhams-projects-ac9ce468.vercel.app/",  // You can replace "*" with your frontend URL for better security
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
-app.use(cors());
+// Handle preflight requests
+app.options("*", cors());
 app.use(express.json());
 
 // app.use(AuthMiddleware);
@@ -42,3 +48,4 @@ app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server started at port ${PORT}`);
 });
 
+module.exports = app;
