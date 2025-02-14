@@ -38,9 +38,10 @@ function googleSheetSerialToDate(serial) {
 
 // Order Route
 router.post("/order", async (req, res) => {
+    console.log("New req to", req.url);
     const { user, choice } = req.body;
     const currentHour = new Date().getHours();
-    const isMorning = currentHour < 12;
+    const isMorning = currentHour < 14;
 
     // Correct Date Format: "11 Feb 2025"
     const todayDate = new Date().toLocaleDateString("en-GB", {
