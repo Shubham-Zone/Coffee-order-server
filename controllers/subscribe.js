@@ -2,7 +2,6 @@ require("dotenv").config();
 const Subscription = require("../models/Subscription");
 
 exports.subscribe = async (req, res) => {
-    console.log("Subscribe req", req.url);
     try {
         const { endpoint, keys } = req.body;
         console.log(`new req comes ${req.url}`, req.body);
@@ -28,12 +27,14 @@ exports.subscribe = async (req, res) => {
 exports.getSubscriptions = async (req, res) => {
     try {
         const subscriptions = await Subscription.find();
+        if(subscriptions.length === 0) {
+            return res.status(402).json({msg: 'No subscriptions found.'});
+        }
         res.status(200).json(subscriptions);
     } catch (e) {
         res.status(500).json({ msg: e.message });
     }
 };
-
 
 
 // exports.subscribe = async (req, res) => {

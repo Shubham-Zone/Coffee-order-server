@@ -38,7 +38,7 @@ mongoose
     });
 
 // cron.schedule("0 11,17 * * *", async () => await sendNotification());
-cron.schedule("0 11,17 * * *", async () => {
+cron.schedule("0 11,16 * * *", async () => {
     console.log("Cron job running every second...", new Date().toLocaleTimeString());
     await sendNotification();
 });

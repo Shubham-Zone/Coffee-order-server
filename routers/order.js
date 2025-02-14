@@ -41,7 +41,7 @@ router.post("/order", async (req, res) => {
     console.log("New req to", req.url);
     const { user, choice } = req.body;
     const currentHour = new Date().getHours();
-    const isMorning = currentHour < 14;
+    const isMorning = currentHour < 14; // Morning coffee or chai till 2 pm
 
     // Correct Date Format: "11 Feb 2025"
     const todayDate = new Date().toLocaleDateString("en-GB", {
@@ -68,7 +68,7 @@ router.post("/order", async (req, res) => {
         console.log(`Using start column: ${startColumn} for ${currentMonth}`);
 
         // Load all necessary cells in the expected date range
-        const range = `${startColumn}1:${startColumn}200`; // Load first 100 rows
+        const range = `${startColumn}1:${startColumn}200`; // Load first 200 rows
         await sheet.loadCells(range);
         console.log("Cells loaded successfully...");
 

@@ -9,7 +9,7 @@ const settings = {
             publicKey: process.env.PUBLIC_VAPID_KEY,
             privateKey: process.env.PRIVATE_VAPID_KEY
         },
-        gcmAPIKey: "gcmKey", 
+        gcmAPIKey: "gcmKey",
         TTL: 2419200,
         contentEncoding: "aes128gcm",
         headers: {},
@@ -21,7 +21,6 @@ const push = new PushNotifications(settings);
 
 // Send Notifications at 11 AM & 5 PM
 const sendNotification = async () => {
-    console.log("Notification function trigger");
     const payload = {
         title: "Coffee or Chai?",
         body: "Would you like coffee or tea? Click to choose.",
@@ -41,4 +40,4 @@ const sendNotification = async () => {
     }
 };
 
-module.exports = {sendNotification};
+module.exports = { sendNotification };
